@@ -19,6 +19,7 @@
     <script src="../libs/aframe-interpolate-component.js"></script>
     <script src="../libs/cv.js"></script>
     <script src="../libs/aruco.js"></script>
+    <script src="../libs/app.js"></script>
     <script>
         registerAframeVideoBillboard(window.AFRAME);
         aframeFrustumLockComponent(window.AFRAME);
@@ -35,7 +36,7 @@
         <a-assets>
           <a-mixin id="cube" geometry="primitive: box"></a-mixin>
         </a-assets>
-        <a-entity mixin="cube" firebase-broadcast="components:mixin,position,rotation,interpolation" interpolation="duration:25" position="1 0.75 -4" rotation="0 0 0" radius="0.5"></a-entity>
+        <a-entity mixin="cube" firebase-broadcast="components:mixin,position,rotation" interpolation="duration:25" position="1 0.75 -4" rotation="0 0 0" radius="0.5"></a-entity>
 
         <a-camera>
             <a-video-billboard rotation="0 180 0" material="side:double" frustum-lock="widthProperty: video-billboard.minWidth; heightProperty: video-billboard.minHeight; depth: 10;" ar-camera="elid: box" />

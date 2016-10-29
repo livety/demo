@@ -8,9 +8,9 @@
     <script src="../src/firebase.config.js"></script> -->
     <script type="text/javascript" src="../src/aframe.min.js"></script>
     <script src="https://rawgit.com/ngokevin/aframe-firebase-component/master/dist/aframe-firebase-component.min.js"></script>
+    <script src="../src/adapter.js"></script>
     <script src="../libs/browser-cuid.js"></script>
     <script src="../libs/lodash.core.min.js"></script>
-    <script src="../src/adapter.js"></script>
     <script src="../libs/aframe-video-billboard.js"></script>
     <script src="../libs/aframe-frustum-lock.js"></script>
     <script src="../libs/aframe-interpolate-component.js"></script>
@@ -30,7 +30,7 @@
                     storageBucket: livety-693e4.appspot.com">
 
 
-        <a-entity id="avatar" mixin="avatar-head" camera look-controls firebase-broadcast="components: mixin, position, rotation" position="0 1.8 5">
+        <a-entity id="avatar" mixin="avatar-head" firebase-broadcast="components: mixin, position, rotation" position="0 1.8 5">
         </a-entity>
 
         <a-box id="box" interpolation="duration:25" position="1 0.75 -4" rotation="0 0 0" radius="0.5" height="1.5" color="#FFC65D"></a-box>

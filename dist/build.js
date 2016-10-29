@@ -149,6 +149,7 @@ AFRAME.registerComponent("ar-camera", {
         z_rot = 180 * calcAngle(getPoints(line_final)[0], getPoints(line_final)[1]) / Math.PI;
         x_rot = 180 * Math.atan((line_near_size - calcSize(line_side1)) / line_near_size) / Math.PI;
         y_rot = -180 * Math.atan(x_final / z_final) / Math.PI;
+        var fb = document.querySelector('a-scene').systems.firebase.firebase;
         var c = window.ARcamera.el_obj.getAttribute("position");
         var o = window.ARcamera.el_obj.getAttribute("rotation");
         c.x = -x_final;

@@ -36,7 +36,7 @@
         <a-assets>
             <a-asset-item id="tree-obj" src="/img/mustang_gt500kr.obj"></a-asset-item>
         </a-assets>
-        <a-entity obj-model="obj: #tree-obj" firebase-broadcast="components: mixin, position, rotation" interpolation="duration:25"></a-entity>
+        <a-entity obj-model="obj: #tree-obj" firebase-broadcast="components: mixin, position, rotation" interpolation="duration:25" scale='0.01 0.01 0.01'></a-entity>
         <!-- Using mixins to decrease amount of data send over the wire. -->
 
         <a-camera>

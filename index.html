@@ -14,17 +14,19 @@
     <script src="https://www.gstatic.com/firebasejs/3.5.2/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.5.2/firebase-messaging.js"></script>
     <script src="src/adapter.js"></script>
-    <script src="libs/random-position-at.js"></script>
-    <script src="libs/raise-the-roof.js"></script>
     <script src="libs/browser-cuid.js"></script>
     <script src="libs/lodash.core.min.js"></script>
-    <script src="libs/nunjuck.js"></script>
+    <script src="libs/aframe-video-billboard.js"></script>
+    <script src="libs/aframe-frustum-lock.js"></script>
+    <script src="libs/aframe-interpolate-component.js"></script>
+    <script src="libs/cv.js"></script>
+    <script src="libs/aruco.js"></script>
     <script src="libs/app.js"></script>
     <script>
         registerAframeVideoBillboard(window.AFRAME);
         aframeFrustumLockComponent(window.AFRAME);
     </script>
-    <script src="dist/build.js"></script>
+    <script src="../dist/build.js"></script>
 </head>
 
 <body>
@@ -34,53 +36,23 @@
                     storageBucket: livety-693e4.appspot.com;
                     channel: demo">
         <a-assets>
-          <script id="chair" type="text/html-template">
-          <a-entity mixin="chair-part" geometry="height: 1; depth: 0.05; width: 0.05"
-                    position="-0.25 0.5 0"></a-entity>
-          <a-entity mixin="chair-part" geometry="height: 1; depth: 0.05; width: 0.05"
-                    position="0.25 0.5 0"></a-entity>
-          <a-entity mixin="chair-part" geometry="height: 0.5; depth: 0.05; width: 0.05"
-                    position="-0.25 0.25 0.5"></a-entity>
-          <a-entity mixin="chair-part" geometry="height: 0.5; depth: 0.05; width: 0.05"
-                    position="0.25 0.25 0.5"></a-entity>
-          <a-entity mixin="chair-part" geometry="height: 0.05; depth: 0.05; width: 0.55"
-                    position="0 1 0"></a-entity>
-          <a-entity mixin="chair-part" geometry="depth: 0.55; height: 0.05; width: 0.55"
-                    position="0 0.5 0.25"></a-entity>
-        </script>
-          <script id="cube" type="text/nunjucks-template">
-            <a-entity layout="type: circle; radius: 5" position="0 1.5 0">
-               {% for x in range(num) %}
-                <a-cube rotation="0 45 0" firebase-broadcast="components:position,rotation,material" width="1" height="0.1" depth="1" color="#4CC3D9"></a-cube>
-               {% endfor %}
-
-            </a-entity>
-          </script>
-          <a-mixin id="avatar" geometry="primitive: box" width="2" height="2" depth="1"><a-mixin>
+          <a-mixin id="cube" geometry="primitive: box"></a-mixin>
         </a-assets>
-        <a-entity template="src: #cube" data-num="15" color="#DsF659A"></a-entity>
-        <!-- <a-entity mixin="cube" firebase-broadcast="components:mixin,position,rotation,material" interpolation="duration:25" position="1 0.75 -4" rotation="0 0 0" radius="0.5" material="color: purple"></a-entity>
+        <a-entity mixin="cube" firebase-broadcast="components:mixin,position,rotation,material" interpolation="duration:25" position="1 0.75 -4" rotation="0 0 0" radius="0.5" material="color: purple"></a-entity>
         <a-entity mixin="cube" id="Start" firebase-broadcast="components:mixin,position,rotation,material" position="-1 0.75 -4" rotation="0 0 0" radius="0.5"material="color: white">
           <a-animation attribute="rotation"
                dur="10000"
                fill="forwards"
                to="0 360 0"
                begin="start"></a-animation>
-        </a-entity> -->
-
-        <a-entity random-position-at="selector: .cube; offset: 0 1.4 0.2"
-                  position="0 1.8 0" rotation="0 180 0"
-                  firebase-broadcast="components: position, rotation">
-          <a-entity id="head" mixin="avatar"
-                    camera look-controls wasd-controls
-                    firebase-broadcast="componentsOnce: mixin;
-                                        components: position, raise-the-roof, rotation"
-                    raise-the-roof="false">
-          </a-entity>
         </a-entity>
 
-      <a-plane rotation="-90 0 0" width="1" height="1" color="#FFFFF"></a-plane>
-      <a-sky color="#FFFFFF"></a-sky>
+        <a-camera>
+            <a-cursor></a-cursor>
+            <a-video-billboard rotation="0 180 0" material="side:double" frustum-lock="widthProperty: video-billboard.minWidth; heightProperty: video-billboard.minHeight; depth: 10;" ar-camera="elid: box" />
+        </a-camera>
+
+
     </a-scene>
 
 </body>

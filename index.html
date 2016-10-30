@@ -51,7 +51,7 @@
           <script id="chair" type="text/x-nunjucks-template">
             <a-entity layout="type: circle; radius: 5" position="0 1.5 0">
                {% for x in range(num) %}
-                <a-cube rotation="0 45 0" width="1" height="0.1" depth="1" color="#4CC3D9"></a-cube>
+                <a-cube rotation="0 45 0" firebase-broadcast="components:mixin,position,rotation,material" width="1" height="0.1" depth="1" color="#4CC3D9"></a-cube>
                {% endfor %}
 
             </a-entity>
@@ -79,9 +79,6 @@
           </a-entity>
         </a-entity>
 
-       <a-camera id="me" position="0 1.8 0">
-          <a-cursor color="#AFAFAF">
-       </a-camera>
       <a-plane rotation="-90 0 0" width="1" height="1" color="#FFFFF"></a-plane>
       <a-sky color="#FFFFFF"></a-sky>
     </a-scene>

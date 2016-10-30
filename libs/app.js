@@ -1,6 +1,6 @@
 $(document).ready(function(){
   var data = AFRAME.utils.entity.getComponentProperty;
-  var positionCube = data('#cube','firebase-broadcast',firebase-broadcast['#cube']);
+  var positionCube = data('#cube','firebase-broadcast','#cube');
   $('#Start').on('click',function(){
     var entities = [].slice.call(document.querySelectorAll("#Start"));
     entities.forEach(function (el) { el.emit('start'); });

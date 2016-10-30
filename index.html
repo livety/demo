@@ -14,13 +14,10 @@
     <script src="https://www.gstatic.com/firebasejs/3.5.2/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.5.2/firebase-messaging.js"></script>
     <script src="src/adapter.js"></script>
+    <script src="libs/random-position-at.js"></script>
+    <script src="libs/raise-the-roof.js"></script>
     <script src="libs/browser-cuid.js"></script>
     <script src="libs/lodash.core.min.js"></script>
-    <script src="libs/aframe-video-billboard.js"></script>
-    <script src="libs/aframe-frustum-lock.js"></script>
-    <script src="libs/aframe-interpolate-component.js"></script>
-    <script src="libs/cv.js"></script>
-    <script src="libs/aruco.js"></script>
     <script src="libs/app.js"></script>
     <script>
         registerAframeVideoBillboard(window.AFRAME);
@@ -47,11 +44,21 @@
                begin="start"></a-animation>
         </a-entity>
 
+        <a-entity random-position-at="selector: .chair; offset: 0 1.4 0.2"
+                  position="0 1.8 0" rotation="0 180 0"
+                  firebase-broadcast="components: position, rotation">
+          <a-entity id="head" mixin="avatar"
+                    camera look-controls wasd-controls
+                    firebase-broadcast="componentsOnce: mixin;
+                                        components: position, raise-the-roof, rotation"
+                    raise-the-roof="false">
+          </a-entity>
+        </a-entity>
+
         <a-camera>
             <a-cursor></a-cursor>
-            <a-video-billboard rotation="0 180 0" material="side:double" frustum-lock="widthProperty: video-billboard.minWidth; heightProperty: video-billboard.minHeight; depth: 10;" ar-camera="elid: box" />
         </a-camera>
-
+      <a-plane></a-plane>
 
     </a-scene>
 

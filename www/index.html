@@ -33,10 +33,8 @@
                     databaseURL: https://livety-693e4.firebaseio.com;
                     storageBucket: livety-693e4.appspot.com;
                     channel: demo">
-        <a-assets>
-          <a-mixin id="cube" geometry="primitive: box"></a-mixin>
-        </a-assets>
-        <a-entity mixin="cube" firebase-broadcast="components:mixin,position,rotation" interpolation="duration:25" position="1 0.75 -4" rotation="0 0 0" radius="0.5"></a-entity>
+
+        <a-entity id="cube" firebase-broadcast="components:id,position,rotation" interpolation="duration:25" position="1 0.75 -4" rotation="0 0 0" radius="0.5"></a-entity>
 
         <a-camera>
             <a-video-billboard rotation="0 180 0" material="side:double" frustum-lock="widthProperty: video-billboard.minWidth; heightProperty: video-billboard.minHeight; depth: 10;" ar-camera="elid: box" />

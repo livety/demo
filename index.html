@@ -18,9 +18,7 @@
     <script src="libs/raise-the-roof.js"></script>
     <script src="libs/browser-cuid.js"></script>
     <script src="libs/lodash.core.min.js"></script>
-    <script src="https://rawgit.com/ngokevin/aframe-layout-component/master/dist/aframe-layout-component.min.js"></script>
-    <!-- Drop in another component and use it from markup. -->
-    <script src="https://rawgit.com/ngokevin/aframe-template-component/master/dist/aframe-template-component.min.js"></script>
+    <script src="libs/nunjuck.js"></script>
     <script src="libs/app.js"></script>
     <script>
         registerAframeVideoBillboard(window.AFRAME);
@@ -36,7 +34,21 @@
                     storageBucket: livety-693e4.appspot.com;
                     channel: demo">
         <a-assets>
-          <script id="cube" type="text/x-nunjucks-template">
+          <script id="chair" type="text/html-template">
+          <a-entity mixin="chair-part" geometry="height: 1; depth: 0.05; width: 0.05"
+                    position="-0.25 0.5 0"></a-entity>
+          <a-entity mixin="chair-part" geometry="height: 1; depth: 0.05; width: 0.05"
+                    position="0.25 0.5 0"></a-entity>
+          <a-entity mixin="chair-part" geometry="height: 0.5; depth: 0.05; width: 0.05"
+                    position="-0.25 0.25 0.5"></a-entity>
+          <a-entity mixin="chair-part" geometry="height: 0.5; depth: 0.05; width: 0.05"
+                    position="0.25 0.25 0.5"></a-entity>
+          <a-entity mixin="chair-part" geometry="height: 0.05; depth: 0.05; width: 0.55"
+                    position="0 1 0"></a-entity>
+          <a-entity mixin="chair-part" geometry="depth: 0.55; height: 0.05; width: 0.55"
+                    position="0 0.5 0.25"></a-entity>
+        </script>
+          <script id="chair" type="text/x-nunjucks-template">
             <a-entity layout="type: circle; radius: 5" position="0 1.5 0">
                {% for x in range(num) %}
                 <a-cube rotation="0 45 0" width="1" height="0.1" depth="1" color="#4CC3D9"></a-cube>
@@ -66,12 +78,12 @@
                     raise-the-roof="false">
           </a-entity>
         </a-entity>
-        <!-- <a-plane></a-plane> -->
 
-        <a-camera>
-            <a-cursor></a-cursor>
-        </a-camera>
-
+       <a-camera id="me" position="0 1.8 0">
+          <a-cursor color="#AFAFAF">
+       </a-camera>
+      <a-plane rotation="-90 0 0" width="1" height="1" color="#FFFFF"></a-plane>
+      <a-sky color="#FFFFFF"></a-sky>
     </a-scene>
 
 </body>

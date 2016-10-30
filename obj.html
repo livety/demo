@@ -28,8 +28,15 @@
   <a-scene>
                   <a-assets>
                       <a-asset-item id="tree-obj" src="/img/bati.obj"></a-asset-item>
+                      <a-asset-item id="tree-mtl" src="/img/bati.mtl"></a-asset-item>
                   </a-assets>
-                  <a-entity obj-model="obj: #tree-obj" firebase-broadcast="components: mixin, position, rotation" interpolation="duration:25"></a-entity>
+                  <a-obj-model src="#tree-obj" mtl="#tree-mtl" scale="0.1 0.1 0.1" position="-1.93 -1.68 -6.78" rotation="0 95 0"></a-obj-model>
+
+                  <a-assets>
+                      <a-asset-item id="tree-obj2" src="/img/bati.obj"></a-asset-item>
+                      <a-asset-item id="tree-mtl2" src="/img/bati.mtl"></a-asset-item>
+                  </a-assets>
+                  <a-obj-model src="#tree-obj2" mtl="#tree-mtl2" scale="0.1 0.1 -0.1" position=" 2.93 -1.68 -6.78" rotation="0 0 0"></a-obj-model>
 
       <a-camera>
           <a-cursor></a-cursor>

@@ -39,25 +39,24 @@
           <script id="cube" type="text/x-nunjucks-template">
             <a-entity layout="type: circle; radius: 5" position="0 1.5 0">
                {% for x in range(num) %}
-                <a-cube rotation="0 45 0" width="1" height="0.1" depth="1" color="#4CC3D9">
-
-                </a-cube>
+                <a-cube rotation="0 45 0" width="1" height="0.1" depth="1" color="#4CC3D9"></a-cube>
                {% endfor %}
 
             </a-entity>
           </script>
+          <a-mixin id="avatar" geometry="primitive: box" width="2" height="2" depth="1"><a-mixin>
         </a-assets>
         <a-entity template="src: #cube" data-num="15" color="#DsF659A"></a-entity>
-        <a-entity mixin="cube" firebase-broadcast="components:mixin,position,rotation,material" interpolation="duration:25" position="1 0.75 -4" rotation="0 0 0" radius="0.5" material="color: purple"></a-entity>
+        <!-- <a-entity mixin="cube" firebase-broadcast="components:mixin,position,rotation,material" interpolation="duration:25" position="1 0.75 -4" rotation="0 0 0" radius="0.5" material="color: purple"></a-entity>
         <a-entity mixin="cube" id="Start" firebase-broadcast="components:mixin,position,rotation,material" position="-1 0.75 -4" rotation="0 0 0" radius="0.5"material="color: white">
           <a-animation attribute="rotation"
                dur="10000"
                fill="forwards"
                to="0 360 0"
                begin="start"></a-animation>
-        </a-entity>
+        </a-entity> -->
 
-        <a-entity random-position-at="selector: .chair; offset: 0 1.4 0.2"
+        <a-entity random-position-at="selector: .cube; offset: 0 1.4 0.2"
                   position="0 1.8 0" rotation="0 180 0"
                   firebase-broadcast="components: position, rotation">
           <a-entity id="head" mixin="avatar"

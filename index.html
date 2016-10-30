@@ -7,10 +7,12 @@
     <!-- <script src="https://www.gstatic.com/firebasejs/3.5.2/firebase.js"></script>
     <script src="../src/firebase.config.js"></script> -->
     <script type="text/javascript" src="../src/aframe.min.js"></script>
+    <script src="../src/jquery-2.2.3.min.js"></script>
     <script src="https://rawgit.com/ngokevin/aframe-firebase-component/master/dist/aframe-firebase-component.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.5.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.5.2/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.5.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.5.2/firebase-messaging.js"></script>
     <script src="../src/adapter.js"></script>
     <script src="../libs/browser-cuid.js"></script>
     <script src="../libs/lodash.core.min.js"></script>
@@ -19,7 +21,7 @@
     <script src="../libs/aframe-interpolate-component.js"></script>
     <script src="../libs/cv.js"></script>
     <script src="../libs/aruco.js"></script>
-    <!-- <script src="../libs/app.js"></script> -->
+    <script src="../libs/app.js"></script>
     <script>
         registerAframeVideoBillboard(window.AFRAME);
         aframeFrustumLockComponent(window.AFRAME);
@@ -36,9 +38,17 @@
         <a-assets>
           <a-mixin id="cube" geometry="primitive: box"></a-mixin>
         </a-assets>
-        <a-entity mixin="cube" firebase-broadcast="components:mixin,position,rotation" interpolation="duration:25" position="1 0.75 -4" rotation="0 0 0" radius="0.5"></a-entity>
+        <a-entity mixin="cube" firebase-broadcast="components:mixin,position,rotation,material" interpolation="duration:25" position="1 0.75 -4" rotation="0 0 0" radius="0.5" material="color: purple"></a-entity>
+        <a-entity mixin="cube" id="Start" firebase-broadcast="components:mixin,position,rotation,material" position="-1 0.75 -4" rotation="0 0 0" radius="0.5"material="color: white">
+          <a-animation attribute="rotation"
+               dur="10000"
+               fill="forwards"
+               to="0 360 0"
+               begin="start"></a-animation>
+        </a-entity>
 
         <a-camera>
+            <a-cursor></a-cursor>
             <a-video-billboard rotation="0 180 0" material="side:double" frustum-lock="widthProperty: video-billboard.minWidth; heightProperty: video-billboard.minHeight; depth: 10;" ar-camera="elid: box" />
         </a-camera>
 
